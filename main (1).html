@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Task Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <!-- <style>
+        .done{
+            text-decoration: line-through;
+            color: red;
+        }
+    </style> -->
+</head>
+<body>
+    <div id="app">
+        <div>
+            <label for="task">Enter your task here:</label>
+            <input type="text" v-model="newTask">
+            <button v-on:click="addTask">Add Task</button>
+            <p :style="infoColor"><em>{{info}}</em></p>
+        </div>
+
+        <h2>My Tasks</h2>
+        <div v-if="tasks.length === 0">
+            <h4>There are not tasks added!</h4>
+        </div>
+        <div v-else>
+            <ul>
+                <li v-for="(task, index) in tasks">
+                    <span :class="{done: task.completed}">{{ task.taskname }}</span>
+                    <button @click="markComplete(index)" v-if="!task.completed">Done</button>
+                </li>
+            </ul>
+        </div>
+        
+        <h2>Created Tasks: {{ totalTask }}</h2>
+        <h2>Completed Tasks: {{ completedTask }}</h2>
+        <h2>Pending Tasks: {{ pendingTask }}</h2>
+        
+    </div>
+    <script src="./script-sm.js"></script>
+</body>
+</html>
+
+<!-- 
+<button @click="markComplete(1)" v-if="!task.completed" key=1>Delete 1</button>
+<button @click="markComplete(2)" v-if="!task.completed" key=2>Delete 2</button>
+<button @click="markComplete(4)" v-if="!task.completed" key=4>Delete 4</button> -->
+
+
+<!-- <button @click="markComplete(2)" v-if="!task.completed">Delete 3</button> -->
+
+<!-- <button @click="markComplete(3)" v-if="!task.completed" key=3>Delete 3</button> -->

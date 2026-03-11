@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue JS Components</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <style>
+        .card{
+            width: 400px;
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>Golbal Count: {{ globalCount }}</h2>
+        <!-- <div class="card">{{ var1 }}</div> -->
+        <!-- <greeting name="Adarsh" course="MAD II" :myuser="user"></greeting> -->
+        <div v-if="users.length == 0">Loading Data</div>
+        <profile v-on:emit-count="addGlobal"  v-for="user in users" :myuser="user" :key="user.id">{{ user.desc }}</profile>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
